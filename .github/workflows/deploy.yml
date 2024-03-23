@@ -47,4 +47,5 @@ jobs:
         id: inject
         run: |
           cd ../scripts
+          chmod +x api-injection.sh
           ./api-injection.sh
