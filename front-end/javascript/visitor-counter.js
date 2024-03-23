@@ -1,3 +1,3 @@
-var apiUrl = "some random url"
+var apiUrl = "url"
 
 console.log(apiUrl)

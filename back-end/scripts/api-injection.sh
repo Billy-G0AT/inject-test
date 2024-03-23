@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cd ../infra
+# cd ../infra
 # Assign the new URL
-new_url=$(terraform output -raw api_url)
 # new_url=$(terraform output -raw api_url)
+new_url="$1"
 
 # Path to your JavaScript file
 file="../../front-end/javascript/visitor-counter.js"
