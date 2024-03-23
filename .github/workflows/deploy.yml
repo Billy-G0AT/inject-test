@@ -43,12 +43,8 @@ jobs:
         run: |
           terraform apply --auto-approve
           
-      - name: Change Dir
-        id: dir
-        run: |
-          cd ../scripts
-
-      - name: Inject API
+      - name: API URL Injection
         id: inject
         run: |
-          bash api-injector.sh
+          cd ../scripts
+          ./api-injection.sh
