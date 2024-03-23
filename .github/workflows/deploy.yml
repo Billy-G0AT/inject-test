@@ -1,0 +1,57 @@
+name: Deploy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform_apply:
+    name: Terraform Apply
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./back-end/infra
+
+    steps:
+      - name: Terraform Apply
+        id: apply
+        run: |
+          terraform apply --auto-approve
+          
+      - name: Change Dir
+        id: dir
+        run: |
+          cd ../scripts
+
+      - name: Inject API
+        id: inject
+        run: |
+          bash api-injector.sh
+
+  sync_s3:
+    name: Sync S3
+    needs: 
+      - changes
+      - terraform_apply
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.changes.outputs.front-end == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./front-end
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-1
+
+      - name: Upload Files To S3 Bucket
+        run: aws s3 sync . s3://billy-euceda.com --delete
