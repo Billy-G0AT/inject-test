@@ -19,7 +19,15 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-        
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -input=false
+      
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate
+
       - name: Terraform Apply
         id: apply
         run: |
