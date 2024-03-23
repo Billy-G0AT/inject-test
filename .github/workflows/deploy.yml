@@ -46,4 +46,5 @@ jobs:
       - name: API URL Injection
         id: inject
         run: |
+          chmod +x ../scripts/api-injection.sh
           ../scripts/api-injection.sh "$(terraform output -raw api_url)"
