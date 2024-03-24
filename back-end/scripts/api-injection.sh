@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# cd ../infra
+cd ../infra
 # Assign the new URL
 # new_url=$(terraform output -raw api_url)
 new_url="$1"
@@ -12,5 +12,4 @@ file="../../front-end/javascript/visitor-counter.js"
 sed -i "s#var apiUrl = \".*\"#var apiUrl = \"$new_url\"#" "$file"
 
 # echo "apiUrl in $javascript_file has been updated to: $new_url"
-echo "testing echo
-"
+echo "New URL is...$new_url"
