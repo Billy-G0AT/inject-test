@@ -6,7 +6,7 @@
 new_url="$1"
 
 # Path to your JavaScript file
-file="../../front-end/javascript/visitor-counter.js"
+file="./front-end/javascript/visitor-counter.js"
 
 # Replace the value of apiUrl in the JavaScript file
 sed -i "s#var apiUrl = \".*\"#var apiUrl = \"$new_url\"#" "$file"
