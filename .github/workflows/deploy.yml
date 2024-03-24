@@ -51,9 +51,7 @@ jobs:
       - name: URL Injection
         id: inject
         run: |
-          sed -i "s#var apiUrl = \".*\"#var apiUrl = \"${{
-          steps.tests.outputs.stdout }}\"#"
-          "../../front-end/javascript/visitor-counter.js"
+          sed -i "s#var apiUrl = \".*\"#var apiUrl = \"${{steps.tests.outputs.stdout }}\"#" "../../front-end/javascript/visitor-counter.js"
           echo "${{steps.capture.outputs.stdout}}"
 #          chmod +x ../scripts/api-injection.sh
 #          ../scripts/api-injection.sh "${{ steps.capture.outputs.stdout }}"
