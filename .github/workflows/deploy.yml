@@ -48,3 +48,7 @@ jobs:
         run: |
           chmod +x ../scripts/api-injection.sh
           ../scripts/api-injection.sh "$(terraform output -raw api_url)"
+
+      - name: Push Injection
+        run: |
+          git commit -am "Auto Push"
