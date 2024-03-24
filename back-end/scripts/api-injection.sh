@@ -12,4 +12,5 @@ file="../../front-end/javascript/visitor-counter.js"
 sed -i "s#var apiUrl = \".*\"#var apiUrl = \"$new_url\"#" "$file"
 
 # echo "apiUrl in $javascript_file has been updated to: $new_url"
-echo "$new_url"
+echo "testing echo
+"
