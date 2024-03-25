@@ -51,10 +51,11 @@ jobs:
       - name: URL Injection
         id: inject
         run: |
-          sed -i "s#var apiUrl = \".*\"#var apiUrl = \"${{steps.capture.outputs.stdout }}\"#" "../../front-end/javascript/visitor-counter.js"
-          echo "${{steps.capture.outputs.stdout}}"
-#          chmod +x ../scripts/api-injection.sh
+          chmod +x ../scripts/api-injection.sh
+          ../scripts/api-injection.sh "${{ steps.capture.outputs.stdout }}"
+#          sed -i "s#var apiUrl = \".*\"#var apiUrl = \"${{steps.capture.outputs.stdout }}\"#" "../../front-end/javascript/visitor-counter.js"
 #          ../scripts/api-injection.sh "${{ steps.capture.outputs.stdout }}"
+#          echo "${{steps.capture.outputs.stdout}}"
 
       - name: Push Injection
         run: |
