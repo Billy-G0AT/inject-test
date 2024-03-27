@@ -1,4 +1,4 @@
-var apiUrl = "https://s086nxz7i2.execute-api.us-west-1.amazonaws.com/dev14/inject-api";
+var apiUrl = "https://i571l269d5.execute-api.us-west-1.amazonaws.com/finally/inject-api";
 
 var newUrl = process.argv.slice(2);
 
