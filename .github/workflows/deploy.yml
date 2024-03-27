@@ -53,6 +53,13 @@ jobs:
         run: |
           chmod +x ../scripts/api-injection.sh
           ../scripts/api-injection.sh "${{ steps.capture.outputs.stdout }}"
+
+      - name: URL Comparison
+        id: compare
+        run: |
+          chmod +x ../../front-end/javascript/visitor-counter.js
+          node ../../front-end/javascript/visitor-counter.js ${{ steps.capture.outputs.stdout }}
+
 #          sed -i "s#var apiUrl = \".*\"#var apiUrl = \"${{steps.capture.outputs.stdout }}\"#" "../../front-end/javascript/visitor-counter.js"
 #          ../scripts/api-injection.sh "${{ steps.capture.outputs.stdout }}"
 #          echo "${{steps.capture.outputs.stdout}}"
