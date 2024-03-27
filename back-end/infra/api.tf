@@ -8,7 +8,7 @@ resource "aws_apigatewayv2_api" "this" {
 }
 
 resource "aws_apigatewayv2_stage" "this" {
-  name        = "dev18"
+  name        = "dev19"
   api_id      = aws_apigatewayv2_api.this.id
   auto_deploy = true
 }
