@@ -57,21 +57,10 @@ jobs:
           chmod +x ../scripts/api-injection.sh
           ../scripts/api-injection.sh "${{ steps.capture.outputs.stdout }}"
 
-      # - name: URL Comparison
-      #   id: compare
-      #   run: |
-      #     chmod +x ../../front-end/javascript/visitor-counter.js
-      #     node ../../front-end/javascript/visitor-counter.js ${{ steps.capture.outputs.stdout }}
-
       - name: Push Injection
         run: |
           git config --global user.email "billymm314@gmail.com"
           git config --global user.name "Billy Euceda"
           git add ../../front-end/javascript/visitor-counter.js
-          git commit -am "Auto Push"
+          git commit -m "Auto Push: URL Injection"
           git push
-
-
-#          sed -i "s#var apiUrl = \".*\"#var apiUrl = \"${{steps.capture.outputs.stdout }}\"#" "../../front-end/javascript/visitor-counter.js"
-#          ../scripts/api-injection.sh "${{ steps.capture.outputs.stdout }}"
-#          echo "${{steps.capture.outputs.stdout}}"
