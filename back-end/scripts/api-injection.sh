@@ -9,4 +9,25 @@ file="../../front-end/javascript/visitor-counter.js"
 # Replace Old URL in JavaScript File
 sed -i "s#var apiUrl = \".*\"#var apiUrl = \"$new_url\"#" "$file"
 
+# Grabs URL From JS File
+apiUrl=$(grep -oP 'apiUrl\s*=\s*"\K[^"]+' $file)
+
+# Compares URL's
+if [ "$apiUrl" -eq "$new_url" ]; then
+    echo "New API URL has been successfully injected."
+    exit 0
+else
+    echo "URL's are not the same" >&2
+    echo "Old URL is $(apiUrl)" >&2
+    echo "New URL is $(new_url)" >&2
+    exit 1
+fi
+
+echo "URL's are not the same" >&2
+
+grep -oP 'myVariable\s*=\s*"\K[^"]+' example.js
+
+
+
+
 echo "Injection Script Has Been Run Successfully"
