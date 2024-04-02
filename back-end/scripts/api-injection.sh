@@ -22,12 +22,3 @@ else
     echo "New URL is $(new_url)" >&2
     exit 1
 fi
-
-echo "URL's are not the same" >&2
-
-grep -oP 'myVariable\s*=\s*"\K[^"]+' example.js
-
-
-
-
-echo "Injection Script Has Been Run Successfully"
