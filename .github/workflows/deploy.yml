@@ -57,11 +57,11 @@ jobs:
           chmod +x ../scripts/api-injection.sh
           ../scripts/api-injection.sh "${{ steps.capture.outputs.stdout }}"
 
-      - name: URL Comparison
-        id: compare
-        run: |
-          chmod +x ../../front-end/javascript/visitor-counter.js
-          node ../../front-end/javascript/visitor-counter.js ${{ steps.capture.outputs.stdout }}
+      # - name: URL Comparison
+      #   id: compare
+      #   run: |
+      #     chmod +x ../../front-end/javascript/visitor-counter.js
+      #     node ../../front-end/javascript/visitor-counter.js ${{ steps.capture.outputs.stdout }}
 
       - name: Push Injection
         run: |

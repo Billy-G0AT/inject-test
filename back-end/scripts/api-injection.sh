@@ -1,15 +1,12 @@
 #!/bin/bash
 
-# cd ../infra
-# Assign the new URL
-# new_url=$(terraform output -raw api_url)
+# Capture New URL as Argument
 new_url="$1"
 
-# Path to your JavaScript file
+# Path to JavaScript File
 file="../../front-end/javascript/visitor-counter.js"
 
-# Replace the value of apiUrl in the JavaScript file
+# Replace Old URL in JavaScript File
 sed -i "s#var apiUrl = \".*\"#var apiUrl = \"$new_url\"#" "$file"
 
-# echo "apiUrl in $javascript_file has been updated to: $new_url"
-echo "New URL is...$new_url"
+echo "Injection Script Has Been Run Successfully"
