@@ -13,7 +13,7 @@ sed -i "s#var apiUrl = \".*\"#var apiUrl = \"$new_url\"#" "$file"
 apiUrl=$(grep -oP 'apiUrl\s*=\s*"\K[^"]+' $file)
 
 # Compares URL's
-if [ "$apiUrl" -eq "$new_url" ]; then
+if [ "$apiUrl" == "$new_url" ]; then
     echo "New API URL has been successfully injected."
     exit 0
 else
